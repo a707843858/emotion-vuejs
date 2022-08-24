@@ -1,0 +1,39 @@
+{
+  "name": "@emotion/vue",
+  "version": "1.0.0",
+  "author": "Ming",
+  "private": false,
+  "license": "MIT",
+  "types": "./src/core/index.d.ts",
+  "scripts": {
+    "dev": "vite",
+    "build": "vue-tsc && vite build",
+    "build:type": "tsc ./src/core/index.ts --declaration --emitDeclarationOnly",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "vue": "^3.2.37"
+  },
+  "devDependencies": {
+    "@emotion/cache": "^11.10.1",
+    "@emotion/serialize": "^1.1.0",
+    "@emotion/utils": "^1.2.0",
+    "@types/node": "^18.7.6",
+    "@vitejs/plugin-vue": "^3.0.3",
+    "typescript": "^4.6.4",
+    "vite": "^3.0.7",
+    "vue-tsc": "^0.39.5"
+  },
+  "files": [
+    "dist",
+    "src"
+  ],
+  "main": "./dist/index.umd.js",
+  "module": "./dist/index.es.js",
+  "exports": {
+    ".": {
+      "import": "./dist/index.es.js",
+      "require": "./dist/index.umd.js"
+    }
+  }
+}
