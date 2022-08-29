@@ -11,5 +11,5 @@ export const createTheme = (theme: Theme): Theme => {
 
 /* 使用主题 */
 export const useTheme = (): Theme => {
-    return inject<Theme>(`${uniqueKey}_theme`, {})
+    return inject<Theme>(`${uniqueKey}_theme`, {pallet: {}, components: {}})
 }

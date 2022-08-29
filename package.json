@@ -1,10 +1,16 @@
 {
-  "name": "@emotion/vue",
-  "version": "1.0.0",
+  "name": "emotion-vuejs",
+  "version": "1.0.2",
   "author": "Ming",
   "private": false,
   "license": "MIT",
   "types": "./src/core/index.d.ts",
+  "repository": "https://github.com/a707843858/emotion-vuejs",
+  "keywords": [
+    "emotion",
+    "vue",
+    "styleComponent"
+  ],
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc && vite build",
@@ -20,6 +26,7 @@
     "@emotion/utils": "^1.2.0",
     "@types/node": "^18.7.6",
     "@vitejs/plugin-vue": "^3.0.3",
+    "@vitejs/plugin-vue-jsx": "^2.0.0",
     "typescript": "^4.6.4",
     "vite": "^3.0.7",
     "vue-tsc": "^0.39.5"

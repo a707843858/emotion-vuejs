@@ -1,10 +1,12 @@
 export interface Theme {
-    components?: {
-        [k: string]: ComponentOptions;
-    };
-    pallet?: {
-        [k: string]: string;
-    };
+    components: Components;
+    pallet: Pallet;
+}
+export interface Components {
+    [k: string]: ComponentOptions;
+}
+export interface Pallet {
+    [k: string]: any;
 }
 export interface ComponentOptions {
     defaultProps?: object;

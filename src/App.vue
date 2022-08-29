@@ -17,6 +17,9 @@ const Button = styled('button')({
 createTheme({
   pallet: {
     main: '#d2357d'
+  },
+  components:{
+
   }
 })
 

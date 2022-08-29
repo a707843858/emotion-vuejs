@@ -13,7 +13,7 @@
 </template>
 
 <script setup lang="ts">
-import {styled} from '@emotion/vue'
+import {styled} from 'emotion-vuejs'
 
 const Button = styled('button')({
   color: '#FFF',
@@ -34,7 +34,7 @@ const Button = styled('button')({
 </template>
 <script setup lang="ts">
 import Home          from './Home.vue'
-import {createTheme} from '@emotion/vue'
+import {createTheme} from 'emotion-vuejs'
 
 createTheme({
   pallet: {

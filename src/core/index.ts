@@ -1,8 +1,9 @@
-import styled                  from './styled'
-import {createTheme, useTheme} from './utils/utils'
+import styled from './styled'
+export *      from './styled'
+import {createTheme, useTheme} from  './utils/utils'
 import {App}                   from 'vue'
 
-export type {Theme, ComponentOptions} from './types/Theme'
+export * from './types/Theme'
 export {
     styled,
     createTheme,
