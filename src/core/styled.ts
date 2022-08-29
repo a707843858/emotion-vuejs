@@ -1,5 +1,6 @@
 import {serializeStyles}                   from '@emotion/serialize'
 import {getRegisteredStyles, insertStyles} from '@emotion/utils'
+import * as process                        from 'process'
 import {uniqueKey}                         from './utils/utils'
 import {
     h,
@@ -34,7 +35,7 @@ const createStyled = function <Props extends object = any, RawBindings = object>
     }
 
 
-    return function (...args: Array<CSSProperties | ((theme: Theme) => CSSProperties)>): StyledComponent<Props, RawBindings> {
+    return function (...args: Array<StyledArgs>): StyledComponent<Props, RawBindings> {
 
         let styles = isReal && typeof tag !== 'string' && tag.__emotion_styles !== undefined
             ? tag.__emotion_styles.slice(0)
@@ -151,6 +152,7 @@ export type StyledOptions = {
 }
 
 interface ComponentExtra<Props, RawBindings = object> {
+    functional: boolean;
     /* 名称 */
     displayName?: string;
     /* 默认 Prop  */
@@ -173,4 +175,31 @@ interface ComponentExtra<Props, RawBindings = object> {
     withComponent: (tag: StyledComponent<Props, RawBindings>, options?: StyledOptions) => StyledComponent<Props, RawBindings>
 }
 
-export  type  StyledComponent<Props, RawBindings = object> = ComponentExtra<Props, RawBindings>
+export interface StyledComponent<Props, RawBindings = object> {
+    /* 名称 */
+    displayName?: string;
+    /* 默认 Prop  */
+    defaultProps?: Props
+    setup?: (props: Readonly<Props>, ctx: SetupContext) => () => RawBindings | RenderFunction | VNode;
+    render?: () => JSX.Element
+    /* 基础组件 */
+    __emotion_base?: string | StyledComponent<Props, RawBindings>
+    /* 基础样式 */
+    __emotion_styles?: any[]
+    /* 基础组件整体 */
+    __emotion_real?: StyledComponent<Props, RawBindings>
+    /* 名称 */
+    __name?: string
+    /* 名称 */
+    name?: string;
+    /* 文件路径 */
+    __file?: string
+    toString: () => string
+    withComponent: (tag: StyledComponent<Props, RawBindings>, options?: StyledOptions) => StyledComponent<Props, RawBindings>
+}
+
+export   type StyledArgs = ExtraStyledArgs | CSSProperties | ((theme: Theme) => CSSProperties)
+
+export interface ExtraStyledArgs {
+    [k: string]: CSSProperties | ExtraStyledArgs
+}
