@@ -4,14 +4,17 @@
 </template>
 
 <script setup lang="ts">
+import {defineComponent}     from 'vue'
 import {styled, createTheme} from './core/index'
 import Sub                   from './Sub.vue'
 
-const Button = styled('button')({
+let Button = styled('button')({
   color: '#FFF',
   fontSize: '20px',
   background: '#747bff'
 })
+
+Button = defineComponent(Button) as  any
 
 // Theme
 createTheme({

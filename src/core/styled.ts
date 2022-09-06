@@ -11,8 +11,8 @@ import {
     RenderFunction, AllowedComponentProps
 }                                          from 'vue'
 import createCache                         from '@emotion/cache'
-import {CSSProperties}                     from 'vue'
-import {Theme}                             from './types/Theme'
+import {CSSProperties} from 'vue'
+import {Theme}         from './types/Theme'
 
 const createStyled = function <Props extends object = any, RawBindings = object>(tag: string | StyledComponent<Props, RawBindings>, options?: StyledOptions) {
     if (process.env.NODE_ENV !== 'production') {

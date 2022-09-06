@@ -4,7 +4,7 @@
   "author": "Ming",
   "private": false,
   "license": "MIT",
-  "types": "./src/core/index.d.ts",
+  "types": "./dist/core/index.d.ts",
   "repository": "https://github.com/a707843858/emotion-vuejs",
   "keywords": [
     "emotion",
@@ -14,7 +14,7 @@
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc && vite build",
-    "build:type": "tsc ./src/core/index.ts --declaration --emitDeclarationOnly",
+    "build:type": "node ./buildType.js",
     "preview": "vite preview"
   },
   "dependencies": {
@@ -27,6 +27,7 @@
     "@types/node": "^18.7.6",
     "@vitejs/plugin-vue": "^3.0.3",
     "@vitejs/plugin-vue-jsx": "^2.0.0",
+    "ts-morph": "^15.1.0",
     "typescript": "^4.6.4",
     "vite": "^3.0.7",
     "vue-tsc": "^0.39.5"
