@@ -1,12 +1,21 @@
 <template>
   <Button> Emotion - Vue</Button>
+  <ButtonB>Emotion - Extends</ButtonB>
   <Sub/>
 </template>
 
-<script setup lang="ts">
+<script setup lang="tsx">
 import {defineComponent}     from 'vue'
 import {styled, createTheme} from './core/index'
 import Sub                   from './Sub.vue'
+
+// Theme
+createTheme({
+  pallet: {
+    main: '#d2357d'
+  },
+  components: {}
+})
 
 let Button = styled('button')({
   color: '#FFF',
@@ -14,16 +23,8 @@ let Button = styled('button')({
   background: '#747bff'
 })
 
-Button = defineComponent(Button) as  any
-
-// Theme
-createTheme({
-  pallet: {
-    main: '#d2357d'
-  },
-  components:{
-
-  }
+let ButtonB = styled(Button)({
+  fontWeight: 'bold'
 })
 
 </script>

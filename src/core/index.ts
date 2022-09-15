@@ -1,5 +1,5 @@
-import styled from './styled'
-export *      from './styled'
+import styled  from '@/core/styled'
+export *       from '@/core/styled'
 import {createTheme, useTheme} from  './utils/utils'
 import {App}                   from 'vue'
 
@@ -7,7 +7,7 @@ export * from './types/Theme'
 export {
     styled,
     createTheme,
-    useTheme
+    useTheme,
 }
 
 export default {
