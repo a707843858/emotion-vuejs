@@ -1,6 +1,6 @@
 {
   "name": "emotion-vuejs",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "author": "Ming",
   "private": false,
   "license": "MIT",
@@ -13,8 +13,7 @@
   ],
   "scripts": {
     "dev": "vite",
-    "build": "vue-tsc && vite build",
-    "build:type": "node ./buildType.js",
+    "build": "vue-tsc && vite build && node ./buildType.js",
     "preview": "vite preview"
   },
   "dependencies": {
@@ -27,7 +26,6 @@
     "@types/node": "^18.7.6",
     "@vitejs/plugin-vue": "^3.0.3",
     "@vitejs/plugin-vue-jsx": "^2.0.0",
-    "ts-morph": "^15.1.0",
     "typescript": "^4.6.4",
     "vite": "^3.0.7",
     "vue-tsc": "^0.39.5"

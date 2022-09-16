@@ -12,7 +12,7 @@ export default defineConfig({
             // options are passed on to @vue/babel-plugin-jsx
         })
     ],
-    resolve:{
+    resolve: {
         alias: {
             '@': path.resolve(__dirname, 'src')
         },
@@ -24,18 +24,24 @@ export default defineConfig({
         https: false
     },
     build: {
+        sourcemap: true,
+        minify: false,
         lib: {
             entry: resolve(__dirname, 'src/core/index.ts'),
             name: 'index',
             fileName: (format) => `index.${format}.js`
         },
         rollupOptions: {
-            external: ['vue'],
+            external: ['vue'], // '@emotion/cache', '@emotion/serialize', '@emotion/utils'
             output: {
                 globals: {
-                    vue: 'Vue'
+                    vue: 'Vue',
+//                    '@emotion/cache': '@emotion/cache',
+//                    '@emotion/serialize': '@emotion/serialize',
+//                    '@emotion/utils': '@emotion/utils'
                 }
             }
         }
-    }
+    },
+    define: { 'process.env': {} }
 })
