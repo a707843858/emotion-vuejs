@@ -12,13 +12,16 @@ import {
     SetupContext,
     inject,
     Component,
-    defineComponent, getCurrentInstance
+    defineComponent, getCurrentInstance,
+    getCurrentScope,
+    ref, onBeforeMount, provide
 }                                          from 'vue'
 import createCache                         from '@emotion/cache'
 import {CSSProperties}                     from 'vue'
 import {Theme}                             from './types/Theme'
 
 const createStyled = function <Props = {}, RawBindings = {}, D = {}, C extends ComputedOptions = {}, M extends MethodOptions = {}, Mixin extends ComponentOptionsMixin = ComponentOptionsMixin, Extends extends ComponentOptionsMixin = ComponentOptionsMixin, E extends EmitsOptions = EmitsOptions, EE extends string = string>(tag: string | DefineComponent<Props, RawBindings, D, C, M, Mixin, Extends, E, EE>, options?: StyledOptions) {
+
 
     if (process.env.NODE_ENV !== 'production') {
         if (tag === undefined) {
@@ -27,6 +30,7 @@ const createStyled = function <Props = {}, RawBindings = {}, D = {}, C extends C
             )
         }
     }
+
 
     let isReal: boolean = false
     let baseTag: DefineComponent<Props, RawBindings, D, C, M, Mixin, Extends, E, EE> | string = tag
@@ -50,8 +54,9 @@ const createStyled = function <Props = {}, RawBindings = {}, D = {}, C extends C
             styles.push(`label:${identifierName};`)
         }
 
-        let argsLen = args.length
+
         const theme = useTheme()
+        let argsLen = args.length
         if (argsLen) {
             for (let i = 0; i < argsLen; i++) {
                 const item = args[i]
@@ -67,6 +72,7 @@ const createStyled = function <Props = {}, RawBindings = {}, D = {}, C extends C
                 }
             }
         }
+
 
         let component = defineComponent({
             name: '',
@@ -84,7 +90,7 @@ const createStyled = function <Props = {}, RawBindings = {}, D = {}, C extends C
                         {...(options || {}), ...nextOptions}
                 )(...styles)
             },
-            setup(props, {slots, attrs = {}}: SetupContext) {
+            setup(props, {slots, attrs = {}, expose}: SetupContext) {
 
                 const emotionCache: any = inject('emotionCache', createCache({key: 'ev'}))
                 const classInterpolations: any[] = []
@@ -93,8 +99,6 @@ const createStyled = function <Props = {}, RawBindings = {}, D = {}, C extends C
                     theme
                 }
                 const newProps = {...(defaultProps || {}), ...props}
-
-                const children = slots?.default && slots.default() || undefined
 
                 let classNames = ''
                 if (typeof attrs.class === 'string') {
@@ -124,7 +128,7 @@ const createStyled = function <Props = {}, RawBindings = {}, D = {}, C extends C
                 }
 
 
-                return () => h(baseTag as Component, {class: classNames, ...newProps}, [children])
+                return () => (<baseTag class={classNames} {...newProps} v-slots={slots}/>)
             }
         })
 

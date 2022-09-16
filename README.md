@@ -51,7 +51,7 @@ createTheme({
 </template>
 
 <script setup lang="ts">
-import {useTheme, styled} from '@emotion/vue'
+import {useTheme, styled} from 'emotion-vuejs'
 
 const Button = styled('button')(({pallet}) => ({
   color: '#FFF',
@@ -71,4 +71,44 @@ const Button = styled('button')(({pallet}) => ({
  **/
 
 </script>
+```
+
+
+### Typescript
+
+```typescript
+// vite.config.ts
+import vueJsx         from '@vitejs/plugin-vue-jsx'
+
+export default defineConfig({
+    plugins: [
+        vue(),
+        vueJsx({})
+    ],
+})
+```
+
+```typescript
+//  component.tsx
+
+import {styled}          from 'emotion-vuejs'
+import {defineComponent} from 'vue'
+
+
+
+export default defineComponent( {
+    setup() {
+
+        /* it can only be used inside setup() or functional components.  */
+        const A = styled('button')({
+            color: 'red'
+        })
+
+        return () => (
+            <A>emotion - Tsx - vue </A>
+        )
+    }
+})
+
+
 ```

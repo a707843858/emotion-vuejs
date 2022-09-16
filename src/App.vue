@@ -1,13 +1,15 @@
 <template>
   <Button> Emotion - Vue</Button>
-  <ButtonB>Emotion - Extends</ButtonB>
+  <ButtonB a="c">Emotion - Extends</ButtonB>
   <Sub/>
+  <Tsx/>
 </template>
 
 <script setup lang="tsx">
-import {defineComponent}     from 'vue'
 import {styled, createTheme} from './core/index'
-import Sub                   from './Sub.vue'
+import Sub from '@/example/Sub.vue'
+import Tsx from '@/example/tsxComponent'
+
 
 // Theme
 createTheme({
@@ -26,5 +28,7 @@ let Button = styled('button')({
 let ButtonB = styled(Button)({
   fontWeight: 'bold'
 })
+
+//console.log(Tsx,'tsx')
 
 </script>

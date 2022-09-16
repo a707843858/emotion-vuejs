@@ -3,7 +3,7 @@
 </template>
 
 <script setup lang="ts">
-import {styled, useTheme} from './core/index'
+import {styled, useTheme} from '@/core'
 
 const theme = useTheme()
 
