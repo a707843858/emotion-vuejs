@@ -7,8 +7,8 @@
 
 <script setup lang="tsx">
 import {styled, createTheme} from './core/index'
-import Sub from '@/example/Sub.vue'
-import Tsx from '@/example/tsxComponent'
+import Sub                   from '@/example/Sub.vue'
+import Tsx                   from '@/example/tsxComponent'
 
 
 // Theme
@@ -29,6 +29,5 @@ let ButtonB = styled(Button)({
   fontWeight: 'bold'
 })
 
-//console.log(Tsx,'tsx')
 
 </script>

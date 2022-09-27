@@ -25,7 +25,7 @@ export default defineConfig({
     },
     build: {
         sourcemap: true,
-        minify: false,
+//        minify: false,
         lib: {
             entry: resolve(__dirname, 'src/core/index.ts'),
             name: 'index',

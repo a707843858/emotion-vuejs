@@ -1,9 +1,10 @@
 import styled  from './styled'
 export *       from './styled'
+import {App} from 'vue'
 import {createTheme, useTheme} from  './utils/utils'
-import {App}                   from 'vue'
-
 export * from './types/Theme'
+
+
 export {
     styled,
     createTheme,

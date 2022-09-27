@@ -1,9 +1,8 @@
 import {serializeStyles}                   from '@emotion/serialize'
 import {getRegisteredStyles, insertStyles} from '@emotion/utils'
 import process                             from 'process'
-import {uniqueKey, useTheme}               from './utils/utils'
+import {useTheme}                          from './utils/utils'
 import {
-    h,
     DefineComponent,
     ComponentOptionsMixin,
     ComputedOptions,
@@ -11,11 +10,8 @@ import {
     MethodOptions,
     SetupContext,
     inject,
-    Component,
-    defineComponent, getCurrentInstance,
-    getCurrentScope,
-    ref, onBeforeMount, provide
-}                                          from 'vue'
+    defineComponent, ref, watch
+} from 'vue'
 import createCache                         from '@emotion/cache'
 import {CSSProperties}                     from 'vue'
 import {Theme}                             from './types/Theme'
@@ -41,6 +37,7 @@ const createStyled = function <Props = {}, RawBindings = {}, D = {}, C extends C
     }
 
     return (...args: Array<StyledArgs>) => {
+
 
 
         let styles = isReal && typeof tag !== 'string' && tag.__emotion_styles !== undefined
@@ -87,7 +84,7 @@ const createStyled = function <Props = {}, RawBindings = {}, D = {}, C extends C
                         {...(options || {}), ...nextOptions}
                 )(...styles)
             },
-            setup(props, {slots, attrs = {}, expose}: SetupContext) {
+            setup(props, {slots, attrs = {}}: SetupContext) {
 
                 const emotionCache: any = inject('emotionCache', createCache({key: 'ev'}))
                 const classInterpolations: any[] = []
@@ -149,6 +146,7 @@ const createStyled = function <Props = {}, RawBindings = {}, D = {}, C extends C
         return component
     }
 }
+
 
 export default createStyled
 
